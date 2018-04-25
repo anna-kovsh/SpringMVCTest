@@ -1,3 +1,3 @@
 # SpringMVCTest
 
-Firther info will be added later
+Further info will be added later
