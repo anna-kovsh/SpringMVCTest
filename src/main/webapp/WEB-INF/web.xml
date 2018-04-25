@@ -13,6 +13,24 @@
 		<servlet-name>spring-mvc-test</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
+
+		<!-- Use Java based configuration -->
+		<init-param>
+			<param-name>contextClass</param-name>
+			<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+		</init-param>
+
+		<!-- Specify the package where configuration classes are located -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>com.learning.web.config</param-value>
+		</init-param>
+
+		<!-- https://stackoverflow.com/a/11817368/7464024 -->
+		<!-- Use Java based configuration instead [servletname]-servlet.xml -->
+		<listener>
+			<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+		</listener>
 	</servlet>
 
 	<!-- The Servlet is mapped to / – meaning it becomes the default Servlet of the application. -->
@@ -21,23 +39,5 @@
 		<servlet-name>spring-mvc-test</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
-	<!-- Use Java based configuration -->
-	<context-param>
-		<param-name>contextClass</param-name>
-		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
-	</context-param>
-
-	<!-- Specify the package where configuration classes are located -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>com.learning.web.config</param-value>
-	</context-param>
-
-	<!-- https://stackoverflow.com/a/11817368/7464024 -->
-	<!-- Use Java based configuration instead [servletname]-servlet.xml -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
 
 </web-app>
